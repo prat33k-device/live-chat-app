@@ -15,9 +15,17 @@ const io = new Server(server, {
     }
 });
 
-//
-io.on("connection", (socket)=> {
+// listens for "connection event"
+io.on("connection", (socket) => {
     console.log(`Connected to: ${socket.id}`);
+
+    // now after the connection is established, now we listen on socket from any events
+    // this socket is specific to 1 user
+    socket.on("send_messege", (data) => {
+        // now broadcast this messege to other users
+        console.log(data);
+        socket.broadcast.emit("receive_messege", data);
+    });
 });
 
 server.listen(process.env.PORT, ()=> {
