@@ -15,6 +15,11 @@ const io = new Server(server, {
     }
 });
 
+//
+io.on("connection", (socket)=> {
+    console.log(`Connected to: ${socket.id}`);
+});
+
 server.listen(process.env.PORT, ()=> {
     console.log("Server is runnung at " + process.env.PORT);
 });

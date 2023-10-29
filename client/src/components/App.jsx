@@ -1,7 +1,22 @@
+import { useEffect } from "react";
+import io from "socket.io-client";
+import "./App.css";
 
 function App() {
+
+  useEffect(()=> {
+    const socket = io.connect("http://localhost:3001");
+  }, []);
+
+  function sendMessage() {
+
+  }
+
   return (
-    <h1>Hello world</h1>
+    <div className="App">
+      <input placeholder="Message..."/>
+      <button onClick={sendMessage}>Send</button>
+    </div>
   );
 }
 
