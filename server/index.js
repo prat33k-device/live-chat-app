@@ -23,7 +23,6 @@ io.on("connection", (socket) => {
     // this socket is specific to 1 user
     socket.on("send_messege", (data) => {
         // now broadcast this messege to other users
-        console.log(data);
         socket.broadcast.emit("receive_messege", data);
     });
 });
